@@ -19,6 +19,7 @@ my $builder = Module::Build->new(
         'perl' => '5.008001',
         'Getopt::Long' => 0,
     },
+    script_files        => [ 'script/edge' ],
     add_to_cleanup      => [ 'App-Edge-*' ],
     meta_merge     => {
       resources => {
