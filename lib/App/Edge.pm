@@ -107,6 +107,13 @@ sub _merge_opt {
     push(@{$config->{file}}, $_) for @argv;
 }
 
+sub _show_usage {
+    my $exitval = shift;
+
+    require Pod::Usage;
+    Pod::Usage::pod2usage($exitval);
+}
+
 1;
 
 __END__
