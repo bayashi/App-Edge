@@ -13,10 +13,11 @@ my $builder = Module::Build->new(
     },
     build_requires      => {
         'Test::More' => 0.88,
+        'Test::Output' => 0,
     },
     requires => {
         'perl' => '5.008001',
-        'Carp' => 0,
+        'Getopt::Long' => 0,
     },
     add_to_cleanup      => [ 'App-Edge-*' ],
     meta_merge     => {
