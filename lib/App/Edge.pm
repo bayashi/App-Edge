@@ -33,13 +33,13 @@ sub _main {
 sub _show_file {
     my ($file, $config) = @_;
 
-    open my $fh, '<', $file or die "cannot open '$file' for reading";
-
     my $c = 0;
     my $total = 0;
     my $last_line = '';
     my @grep  = @{$config->{grep}};
     my @grepv = @{$config->{grepv}};
+
+    open my $fh, '<', $file or die "cannot open '$file' for reading";
 
     while ( my $line = <$fh> ) {
         chomp $line;
@@ -55,14 +55,14 @@ sub _show_file {
         }
     }
 
+    close $fh;
+
     print "$c: $last_line\n" if $last_line;
 
     if ($config->{total}) {
         my $plural = $total > 1 ? 's' : '';
         print "total: $total line". $plural. "\n";
     }
-
-    close $fh;
 }
 
 sub _match_grep {
