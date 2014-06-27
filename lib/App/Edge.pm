@@ -96,11 +96,11 @@ sub _merge_opt {
     GetOptionsFromArray(
         \@argv,
         't|total-count' => \$config->{total},
-        'g|grep=s@'   => \$config->{grep},
-        'gv|grepv=s@' => \$config->{grepv},
+        'g|grep=s@'     => \$config->{grep},
+        'gv|grepv=s@'   => \$config->{grepv},
 #        'n|line=i'    => \$config->{n},
-        'f|file=s@'   => \$config->{file},
-        'h|help'      => sub {
+        'f|file=s@'     => \$config->{file},
+        'h|help'        => sub {
             _show_usage(1);
         },
         'v|version'   => sub {
