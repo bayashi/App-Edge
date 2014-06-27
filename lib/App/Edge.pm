@@ -36,12 +36,14 @@ sub _show_file {
     open my $fh, '<', $file or die "cannot open '$file' for reading";
 
     my $c = 0;
+    my $total = 0;
     my $last_line = '';
     my @grep  = @{$config->{grep}};
     my @grepv = @{$config->{grepv}};
 
     while ( my $line = <$fh> ) {
         chomp $line;
+        $total++;
         next if @grepv &&  _match_grepv($line, @grepv);
         next if @grep  && !_match_grep($line, @grep);
         $c++;
@@ -54,6 +56,11 @@ sub _show_file {
     }
 
     print "$c: $last_line\n" if $last_line;
+
+    if ($config->{total}) {
+        my $plural = $total > 1 ? 's' : '';
+        print "total: $total line". $plural. "\n";
+    }
 
     close $fh;
 }
@@ -88,6 +95,7 @@ sub _merge_opt {
 
     GetOptionsFromArray(
         \@argv,
+        't|total-count' => \$config->{total},
         'g|grep=s@'   => \$config->{grep},
         'gv|grepv=s@' => \$config->{grepv},
 #        'n|line=i'    => \$config->{n},

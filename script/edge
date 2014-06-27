@@ -17,9 +17,10 @@ edge - show the edge of logs with conditional grep
 
 =head2 OPTIONS
 
-    -g   --grep       grep condition
-    -gv  --grepv      invert grep condition
-    -f   --file       file path
+    -t   --total-count  also show the total line count
+    -g   --grep         grep condition
+    -gv  --grepv        invert grep condition
+    -f   --file         file path
 
 =head2 EXAMPLES
 
@@ -49,6 +50,13 @@ The above command is mostly same as below commands.
     $ cat error.log | grep found | head -n1
     $ cat error.log | grep found | tail -n1
     $ cat error.log | grep found | wc -l
+
+You can get total line count too.
+
+    $ edge -t --grep found error.log
+    1: 2014/06/27 08:43:00,not found
+    3: 2014/06/27 08:43:02,not found
+    total: 4 lines
 
 
 =head1 AUTHOR
