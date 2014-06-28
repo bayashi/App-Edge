@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use Getopt::Long qw/GetOptionsFromArray/;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 sub run {
     my $self = shift;
